@@ -31,10 +31,8 @@ const JobListItem = ({
         className="self-center rounded-lg"
       />
       <div className="flex-grow space-x-3">
-        <div>
           <h2 className="text-lg font-medium">{title}</h2>
           <p className="text-muted-foreground">{companyName}</p>
-        </div>
         <div className="text-muted-foreground">
           <p className="flex items-center gap-1.5 sm:hidden">
             <Briefcase size={16} className="shrink-0" />

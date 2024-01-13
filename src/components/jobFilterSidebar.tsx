@@ -37,7 +37,7 @@ const JobFilterSidebar = async ({ defaultValue }: IJobFilterSidebarProps) => {
     )) as string[];
   return (
     <aside className="sticky top-0 h-fit rounded border bg-background p-4 md:w-[260px]">
-      <form action={filterDate}>
+      <form action={filterDate} key={JSON.stringify(defaultValue)}>
         <div className="space-y-4">
           <div className="flex flex-col gap-2">
             <Label htmlFor="q">Search</Label>
