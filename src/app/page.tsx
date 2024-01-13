@@ -30,7 +30,7 @@ return {
     q,
     type,
     location,
-    remote:remote===""
+    remote:remote==="true"
   })} | Flow Jobs`
 }
 }
