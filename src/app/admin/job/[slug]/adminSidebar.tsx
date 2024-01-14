@@ -1,7 +1,7 @@
 "use client";
 import { Job } from "@prisma/client";
 import { useFormState } from "react-dom";
-import { approvedSubmission } from "./actions";
+import { approvedSubmission, deleteJob } from "./actions";
 import FormSubmitButton from "@/components/formSubmitButton";
 
 interface IAdminSidebarProps {
@@ -18,6 +18,7 @@ const AdminSidebar = ({ job }: IAdminSidebarProps) => {
       ) : (
         <ApprovedSubmissionButton jobId={job.id} />
       )}
+      <DeleteJobButton jobId={job.id} />
     </aside>
   );
 };
@@ -34,6 +35,21 @@ const ApprovedSubmissionButton = async ({ jobId }: IAdminButtonProps) => {
       <input hidden name="jobId" value={jobId} />
       <FormSubmitButton className="w-full bg-green-500 hover:bg-green-600">
         Approve
+      </FormSubmitButton>
+      {formState?.error && (
+        <p className="text-sm text-red-500">{formState.error}</p>
+      )}
+    </form>
+  );
+};
+
+const DeleteJobButton = ({ jobId }: IAdminButtonProps) => {
+  const [formState, formAction] = useFormState(deleteJob, undefined);
+  return (
+    <form action={formAction}>
+      <input hidden name="jobId" value={jobId} />
+      <FormSubmitButton className="w-full bg-red-500 hover:bg-red-600">
+        Delete
       </FormSubmitButton>
       {formState?.error && (
         <p className="text-sm text-red-500">{formState.error}</p>

@@ -10,6 +10,7 @@ interface IPageProps {
     type?: string;
     location?: string;
     remote?: string;
+    page?: string;
   };
 }
 const getTitle = ({ q, type, location, remote }: jobFilterValue) => {
@@ -24,18 +25,20 @@ const getTitle = ({ q, type, location, remote }: jobFilterValue) => {
   const titleSuffix = location ? ` in ${location}` : "";
   return `${titlePrefix}${titleSuffix}`;
 };
-export const generateMetadata=({searchParams:{q,type,location,remote}}:IPageProps):Metadata=>{
-return {
-  title:`${getTitle({
-    q,
-    type,
-    location,
-    remote:remote==="true"
-  })} | Flow Jobs`
-}
-}
-export default async function Home({
+export const generateMetadata = ({
   searchParams: { q, type, location, remote },
+}: IPageProps): Metadata => {
+  return {
+    title: `${getTitle({
+      q,
+      type,
+      location,
+      remote: remote === "true",
+    })} | Flow Jobs`,
+  };
+};
+export default async function Home({
+  searchParams: { q, type, location, remote, page },
 }: IPageProps) {
   const filterValue: jobFilterValue = {
     q,
@@ -51,7 +54,10 @@ export default async function Home({
       </div>
       <section className="flex flex-col gap-4 md:flex-row">
         <JobFilterSidebar defaultValue={filterValue} />
-        <JobResults filterValue={filterValue} />
+        <JobResults
+          page={page ? parseInt(page) : undefined}
+          filterValue={filterValue}
+        />
       </section>
     </main>
   );
