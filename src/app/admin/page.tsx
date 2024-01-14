@@ -12,7 +12,7 @@ const Page = async () => {
     <main className="m-auto my-10 max-w-5xl space-y-10 px-3">
       <H1 className="text-center">Admin Dashboard</H1>
       <h2 className="text-lg font-bold text-foreground">Unapproved jobs:</h2>
-      <section className="flex flex-col gap-3">
+      {/* <section className="flex flex-col gap-3">
         {unapprovedJobs.map((job) => (
           <Link key={job.id} href={`/admin/jobs/${job.slug}`} className="block">
             <JobListItem job={job} />
@@ -21,7 +21,7 @@ const Page = async () => {
         {unapprovedJobs.length === 0 && (
           <p className="text-muted-foreground">No unapproved jobs</p>
         )}
-      </section>
+      </section> */}
     </main>
   );
 };

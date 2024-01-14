@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import NewJobFrom from "./NewJobFrom";
-export const metaData: Metadata = {
+export const metadata: Metadata = {
   title: "Post new job",
 };
 const Page = () => {
